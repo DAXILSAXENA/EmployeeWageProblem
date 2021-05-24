@@ -2,16 +2,25 @@
 
 echo "Welcome to shell script"
 
+# constants
 IS_PRESENT=1
+EMP_RATE_PER_HR=20
 
-empCheck=$(( RANDOM%2 ))
+# variable
+empCheck=$(( RANDOM % 2 ))
 
+# selection
 
 if [ $empCheck -eq $IS_PRESENT ]
 then
-echo "employee is present"
+        empHrs=8
+        salary=$(( EMP_RATE_PER_HR=20 * empHrs )) #action 1
 else
-echo "employess is absent"
+        salary=0 #action 2
 fi
+
+
+
+
 
 
