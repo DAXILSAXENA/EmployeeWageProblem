@@ -19,7 +19,7 @@ function getworkhours(){
         echo $empHrs
 }
 
-for (( Day=1; Day<=20; Day++ ))
+for (( Day=0; Day<20; Day++ ))
 do
 
 empCheck=$(( RANDOM % 3 )) # 0/1/2
@@ -28,8 +28,18 @@ empHrs="$( getworkhours $empCheck )"
 
         totalWorkingHours=$(( totalWorkingHours + empHrs ))
         salary=$(( EMP_RATE_PER_HR * empHrs ))
-        echo $salary
+
+        SALARY[((Day))]=$salary
 done
 totalsalary=$((totalWorkingHours*EMP_RATE_PER_HR ))
-echo totalsalary : $totalsalary
+echo ${SALARY[@]}
+calSalary=0
+for Day in ${!SALARY[*]}
+do
+        calSalary=$(( calSalary + ${SALARY[$Day]} ))
+done
+echo calSalary: $calSalary
+echo totalSalary: $totalsalary
+
+
 
