@@ -12,16 +12,14 @@ empCheck=$(( RANDOM % 3 )) # 0/1/2
 
 # selection
 
-if [ $empCheck -eq $IS_PRESENT_FULL_TIME ]
-then
-        empHrs=8 # action 1
-elif [ $empCheck -eq $IS_PRESENT_PART_TIME ]
-then
-        empHrs=4 # action 2
-else
-        empHrs=0 # action 3
-fi
+case $empCheck in
+        $IS_PRESENT_FULL_TIME) empHrs=8;;
+        $IS_PRESENT_PART_TIME) empHrs=4;;
+        *) empHrs=0;;
+esac
 salary=$(( EMP_RATE_PER_HR * empHrs ))
+
+
 
 
 
