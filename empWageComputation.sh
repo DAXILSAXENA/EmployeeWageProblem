@@ -32,7 +32,9 @@ empHrs="$( getworkhours $empCheck )"
         SALARY[((Day))]=$salary
 done
 totalsalary=$((totalWorkingHours*EMP_RATE_PER_HR ))
-echo ${SALARY[@]}
+
+echo Days:${!SALARY[*]}
+echo Salary:${SALARY[*]}
 calSalary=0
 for Day in ${!SALARY[*]}
 do
@@ -40,6 +42,5 @@ do
 done
 echo calSalary: $calSalary
 echo totalSalary: $totalsalary
-
 
 
